@@ -29,14 +29,13 @@
             {{disco.titulo}} /
             <a href="{% url 'banda' disco.banda.id %}">{{disco.banda}}</a>
             <p>Publicado el {{disco.fecha}}</p>
-            <p>Descripción del Disco:</p>
+            <p><b>Descripción del Disco:</b></p>
             <p>{{disco.descripDisco}}</p>
             <!-- CRÉDITOS, DATOS Y ROLES DE LA PRODUCCIÓN-->
-            <p>Producción (Colaboraciones):</p>
+            <p><b>Créditos y colaboraciones de la producción:</b></p>
             {% for produccion in produccionDisco %} <!--TODAS LAS COLABORACIONES DE MÚSICOS-->
                 {% if produccion.disco_id == disco.id %} <!-- COLABORACIONES DE ESTE ID DE DISCO-->
                     <p><a href="{% url 'musico' produccion.musico.id %}">{{produccion.musico.nombreArt}}</a></p>
-                    
                     <p>Rol: 
                     {% for indice, item in produccion.ROL_PRODUCCION %}
                         {% if indice == produccion.rol %}
@@ -49,19 +48,19 @@
                 {% endif %}
             {% endfor %} 
             {% if disco.link_bndcmp %}
-                <p><a href="{{disco.link_bndcmp}}" target="_blank">Escuchar en Bandcamp</a></p>
+                <p><a href="{{disco.link_bndcmp}}" target="_blank"><b>Escuchar en Bandcamp</b></a></p>
             {% endif %}
             {% if disco.link_ytb %}
-                <p><a href="{{disco.link_ytb}}" target="_blank">Escuchar en Youtube</a></p>
+                <p><a href="{{disco.link_ytb}}" target="_blank"><b>Escuchar en Youtube</b></a></p>
             {% endif %}
             {% if disco.link_tienda_cd %}
-                <p><a href="{{disco.link_tienda_cd}}" target="_blank">Comprar CD</a></p>
+                <p><a href="{{disco.link_tienda_cd}}" target="_blank"><b>Comprar CD</b></a></p>
             {% endif %}
             {% if disco.link_tienda_vin %}
-                <p><a href="{{disco.link_tienda_vin}}" target="_blank">Comprar VINILO</a></p>
+                <p><a href="{{disco.link_tienda_vin}}" target="_blank"><b>Comprar VINILO</b></a></p>
             {% endif %}
             {% if disco.link_tienda_cas %}
-                <p><a href="{{disco.link_tienda_cas}}" target="_blank">Comprar CASSETTE</a></p>
+                <p><a href="{{disco.link_tienda_cas}}" target="_blank"><b>Comprar CASSETTE</b></a></p>
             {% endif %}
         </div>
     </div>

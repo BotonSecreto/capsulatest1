@@ -20,7 +20,7 @@
             <p>Nombre Real: {{musico.nombreReal}}</p>
             <!-- INSERTAR ACÁ BANDAS, ROLES Y PRODUCCIONES -->
             <br>
-            <p>Bandas:</p>
+            <p><b>Bandas:</b></p>
             {% for integrantes in integranteBanda %} <!--TODOS LOS INTEGRANTES DE BANDAS-->
                 {% if integrantes.musico_id == musico.id %} <!-- BANDA(S) DE ESTE ID DE MÚSICO-->
                     <p><a href="{% url 'banda' integrantes.banda.id %}">{{integrantes.banda.nombreBanda}}</a>
@@ -34,7 +34,7 @@
                 {% endif %}
             {% endfor %}    
             <br>
-            <p>Producciones (Colaboraciones):</p>
+            <p><b>Colaboraciones en producciones:</b></p>
             {% for produccion in produccionDisco %} <!--TODOS LOS MÚSICOS COLABORADORES-->
                 {% if produccion.musico_id == musico.id %} <!-- COLABORACIONES DE ESTE ID DE MÚSICO-->
                     <p>
