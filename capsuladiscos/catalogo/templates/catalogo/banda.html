@@ -1,0 +1,69 @@
+{% extends 'core/base.html' %} <!-- Invoca la plantilla "base.html" -->
+<!-- Bloque particular de esta página -->
+{% load static %} <!-- carga contenido estático-->
+{% block title %}Catálogo{% endblock %} <!--Bloque de título para esta página -->
+
+<!--bloque de imagen de fondo-->
+{% block background %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
+<!--bloque de título y subtítulo-->
+{% block headers %}
+    <h2>:: Bandas / Solistas ::</h2>
+    <span class="subheading">{{banda.nombreBanda}}</span>
+{% endblock %}
+
+{% block content %}
+    <div>
+         <div class="col-lg-5 col-md-4 offset-lg-1">
+         <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
+            <img class="img-fluid" src="{{banda.imgBanda.url}}" alt="">
+            {{banda.nombreBanda}}
+            <p>Descripción de la Banda:</p>
+            <p>{{banda.descripBanda}}</p>
+            
+            <!-- INSERTAR ACÁ INTEGRANTES, ROLES DE LA BANDA Y DISCOS -->
+            <p>Integrantes:</p>
+            {% for integrantes in integranteBanda %} <!--TODOS LOS INTGRANTES DE BANDA-->
+                {% if integrantes.banda_id == banda.id %} <!-- INTEGRANTES DE ESTE ID DE BANDA-->
+                <p>
+                <a href="{% url 'musico' integrantes.musico.id %}">{{integrantes.musico.nombreArt}}</a>
+                <!--Carga roles en la banda desde el modelo y busca según índice del rol del artista--> 
+                {% for indice, item in integrantes.ROL_BANDA %}
+                {% if indice == integrantes.rol %}
+                    ({{item}})
+                {% endif %}
+            {% endfor %}
+                </p>
+                {% endif %}
+            {% endfor %}    
+            <br>
+            <p>Discos Publicados:</p>
+            {% for disco in discos %} <!--TODOS LOS DISCOS -->
+                {% if disco.banda_id == banda.id %} <!-- DISCOS DE ESTE ID DE BANDA-->
+                <p>
+                <a class="navbar-brand" href="{% url 'disco' disco.id %}"><img class="img-fluid" src="{{disco.caratula.url}}" alt=""></a>
+                <a href="{% url 'disco' disco.id %}">{{disco.titulo}}</a>
+                </p>
+                {% endif %}
+            {% endfor %}     
+            <!--************************************************-->
+            {% if banda.link_sptf %}
+                <p><a href="{{banda.link_sptf}}" target="_blank">{{banda.nombreBanda}} en Spotify</a></p>
+            {% endif %}
+            {% if banda.link_bndcmp %}
+                <p><a href="{{banda.link_bndcmp}}" target="_blank">{{banda.nombreBanda}} en Bandcamp</a></p>
+            {% endif %}
+            {% if banda.link_ytb %}
+                <p><a href="{{banda.link_ytb}}" target="_blank">{{banda.nombreBanda}} en Youtube</a></p>
+            {% endif %}
+            {% if banda.link_ig %}
+                <p><a href="{{banda.link_ig}}" target="_blank">Instagram {{banda.nombreBanda}}</a></p>
+            {% endif %}
+            {% if banda.link_fb %}
+                <p><a href="{{banda.link_fb}}" target="_blank">Facebook {{banda.nombreBanda}}</a></p>
+            {% endif %}
+            {% if banda.link_tw %}
+                <p><a href="{{banda.link_tw}}" target="_blank">Twitter {{banda.nombreBanda}}</a></p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %} 

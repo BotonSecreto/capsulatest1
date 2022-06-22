@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %} <!-- Invoca la plantilla "base.html" -->
+<!-- Bloque particular de esta página -->
+{% load static %} <!-- carga contenido estático-->
+{% block title %}Catálogo{% endblock %} <!--Bloque de título para esta página -->
+<!--bloque de imagen de fondo-->
+{% block background %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
+<!--bloque de título y subtítulo-->
+{% block headers %}
+    <!-- <h2>Catálogo de Discos</h2> -->
+    <h2>:: Catálogo de Discos ::</h2>
+    <!-- <span class="subheading">Para escuchar y leer...</span> -->
+{% endblock %}
+
+{% block content %}
+{% for disco in discos %}
+    <div>
+        <div class="col-lg-2 col-md-4 offset-lg-1">
+            <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
+            <a class="navbar-brand" href="{% url 'disco' disco.id %}"><img class="img-fluid" src="{{disco.caratula.url}}" alt=""></a>
+            <a href="{% url 'disco' disco.id %}">{{disco.titulo}}</a> / 
+            <a href="{% url 'banda' disco.banda.id %}">{{disco.banda}}</a>
+        </div>     
+    </div>
+{% endfor %}
+{% endblock %} 

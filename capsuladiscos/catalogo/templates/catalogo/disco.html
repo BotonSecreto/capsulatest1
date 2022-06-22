@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %} <!-- Invoca la plantilla "base.html" -->
+<!-- Bloque particular de esta página -->
+{% load static %} <!-- carga contenido estático-->
+{% block title %}Catálogo{% endblock %} <!--Bloque de título para esta página -->
+
+<!--bloque de imagen de fondo-->
+{% block background %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
+<!--bloque de título y subtítulo-->
+{% block headers %}
+    <h2>:: Discos ::</h2>
+    <span class="subheading">{{disco.titulo}} - {{disco.banda}}</span>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <!-- *************Reproductor ********** -->
+        <textarea maxlength="300" id="txt_sptf" hidden=True>{{disco.link_sptf}}</textarea>
+        <div class="col-lg-5 col-md-4 offset-lg-1" id="reprod"></div>
+        <script type="text/javascript">
+            capturar();
+            function capturar(){
+               document.getElementById("reprod").innerHTML += document.getElementById("txt_sptf").value;
+            }
+        </script>
+        <!--************************************-->
+        <div class="col-lg-5 col-md-4 offset-lg-1">
+            <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
+            <img class="img-fluid" src="{{disco.caratula.url}}" alt="">
+            {{disco.titulo}} /
+            <a href="{% url 'banda' disco.banda.id %}">{{disco.banda}}</a>
+            <p>Publicado el {{disco.fecha}}</p>
+            <p>Descripción del Disco:</p>
+            <p>{{disco.descripDisco}}</p>
+            <!-- CRÉDITOS, DATOS Y ROLES DE LA PRODUCCIÓN-->
+            <p>Producción (Colaboraciones):</p>
+            {% for produccion in produccionDisco %} <!--TODAS LAS COLABORACIONES DE MÚSICOS-->
+                {% if produccion.disco_id == disco.id %} <!-- COLABORACIONES DE ESTE ID DE DISCO-->
+                    <p><a href="{% url 'musico' produccion.musico.id %}">{{produccion.musico.nombreArt}}</a></p>
+                    
+                    <p>Rol: 
+                    {% for indice, item in produccion.ROL_PRODUCCION %}
+                        {% if indice == produccion.rol %}
+                            {{item}}
+                        {% endif %}
+                    {% endfor %}
+                    </p>
+                    <p>Descripción: {{produccion.descripcion}}</p>
+                    <br>
+                {% endif %}
+            {% endfor %} 
+            {% if disco.link_bndcmp %}
+                <p><a href="{{disco.link_bndcmp}}" target="_blank">Escuchar en Bandcamp</a></p>
+            {% endif %}
+            {% if disco.link_ytb %}
+                <p><a href="{{disco.link_ytb}}" target="_blank">Escuchar en Youtube</a></p>
+            {% endif %}
+            {% if disco.link_tienda_cd %}
+                <p><a href="{{disco.link_tienda_cd}}" target="_blank">Comprar CD</a></p>
+            {% endif %}
+            {% if disco.link_tienda_vin %}
+                <p><a href="{{disco.link_tienda_vin}}" target="_blank">Comprar VINILO</a></p>
+            {% endif %}
+            {% if disco.link_tienda_cas %}
+                <p><a href="{{disco.link_tienda_cas}}" target="_blank">Comprar CASSETTE</a></p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %} 
