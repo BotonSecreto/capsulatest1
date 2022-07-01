@@ -1,5 +1,6 @@
 body{
-    font-size:20px;
+    /* font-size:20px; */
+    font-size:18px;
     color:#212529;
     font-family:Lora,'Times New Roman',serif
 }
@@ -9,9 +10,9 @@ p { /*párrafos*/
     margin:10px 0 10px
 }
 
-p a {
+/* p a {
     text-decoration:underline
-}
+} */
 
 h1,
 h2,
@@ -24,15 +25,21 @@ h6 {
 }
 
 a { /*hiperlinks*/
-   color:#212529;
+   color:#000000ee;
    -webkit-transition:all .2s;
    -moz-transition:all .2s;
-   transition:all .2s
+   transition:all .2s;
+   font-weight: bold;
+   /* text-decoration: none; */
+   font-style:oblique;
+   /* font-style: italic */
+   
 }
 
 a:focus,
 a:hover {
-    color:#0085a1
+    color:#be2004;
+    text-decoration: none /* elimina linea inferior del link  */
 }
 
 blockquote {
@@ -65,7 +72,7 @@ blockquote {
 
 ::-moz-selection {
     color:#fff;
-    background:#0085a1;
+    background:#a16100;
     text-shadow:none
 }
 
@@ -84,7 +91,7 @@ img::-moz-selection {
     color:#fff;
     background:0 0
 }
-
+/* ::::::::::::::::: CONFIGURACIÓN DEL MENÚ :::::::::::::::: */
 #mainNav {
     position:absolute;
     border-bottom:1px solid #e9ecef;
@@ -94,7 +101,8 @@ img::-moz-selection {
 
 #mainNav .navbar-brand {
     font-weight:800;
-    color:#343a40
+    /* color:#343a40 */
+    color: #000000ee
 }
 
 #mainNav .navbar-toggler {
@@ -102,20 +110,25 @@ img::-moz-selection {
     font-weight:800;
     padding:13px;
     text-transform:uppercase;
-    color:#343a40
+    /* color:#343a40 */
+    color: #000000ee
 }
 
 #mainNav .navbar-nav>li.nav-item>a {
     font-size:12px;
     font-weight:800;
     letter-spacing:1px;
-    text-transform:uppercase
+    text-transform:uppercase;
+    font-style: normal
 }
 
 @media only screen and (min-width:992px) {
     #mainNav {
         border-bottom:1px solid transparent;
-        background:0 0
+        background:0 0;
+        font-style: normal;
+        color: #000000ee
+
     }
     #mainNav .navbar-brand {
         padding:10px 20px;
@@ -123,15 +136,18 @@ img::-moz-selection {
     }
     #mainNav .navbar-brand:focus,
     #mainNav .navbar-brand:hover {
-        color:rgba(255,255,255,.8)
+        /* color:rgba(255,255,255,.8) */
+        color: #be2004
     }
     #mainNav .navbar-nav>li.nav-item>a {
         padding:10px 20px;
-        color:#fff
+        color: #000000ee
+        /* color:#fff */
     }
     #mainNav .navbar-nav>li.nav-item>a:focus,
     #mainNav .navbar-nav>li.nav-item>a:hover {
-        color:rgba(255,255,255,.8)
+        /* color:rgba(255,255,255,.8) */
+        color: #be2004
     }
 }
 @media only screen and (min-width:992px) {
@@ -144,30 +160,31 @@ img::-moz-selection {
         -ms-transform:translate3d(0,0,0);
         -o-transform:translate3d(0,0,0);
         transform:translate3d(0,0,0);
+        background-color:rgba(255,255,255,.9);
         -webkit-backface-visibility:hidden
     }
-    #mainNav.is-fixed {
+     #mainNav.is-fixed { /* MENÚ QUEDA FIJO ARRIBA */
         position:fixed;
         top:-67px;
         -webkit-transition:-webkit-transform .2s;
         -moz-transition:-moz-transform .2s;
         transition:transform .2s;
-        border-bottom:1px solid #fff;
-        background-color:rgba(255,255,255,.9)
+        border-bottom:1px solid #fff
+        /* background-color:rgba(255,255,255,.9) */
     }
     #mainNav.is-fixed .navbar-brand {
         color:#212529
     }
     #mainNav.is-fixed .navbar-brand:focus,
     #mainNav.is-fixed .navbar-brand:hover {
-        color:#0085a1
+        color:#be2004
     }
     #mainNav.is-fixed .navbar-nav>li.nav-item>a {
         color:#212529
     }
     #mainNav.is-fixed .navbar-nav>li.nav-item>a:focus,
     #mainNav.is-fixed .navbar-nav>li.nav-item>a:hover {
-        color:#0085a1
+        color:#be2004
     }
     #mainNav.is-visible {
         -webkit-transform:translate3d(0,100%,0);
@@ -380,7 +397,7 @@ header.masthead .post-heading .meta a {
 }
 
 .floating-label-form-group-with-focus label {
-    color:#0085a1
+    color:#a16100
 }
 
 form .form-group:first-child .floating-label-form-group {
@@ -418,16 +435,16 @@ footer .copyright {
 }
 
 .btn-primary {
-    background-color:#0085a1;
-    border-color:#0085a1
+    background-color:#000000ee;
+    border-color: #000000ee
 }
 
 .btn-primary:active,
 .btn-primary:focus,
 .btn-primary:hover {
     color:#fff;
-    background-color:#00657b!important;
-    border-color:#00657b!important
+    background-color:#be2004!important;
+    border-color:#be2004!important
 }
 
 .project {

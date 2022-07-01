@@ -26,10 +26,10 @@
         <div class="col-lg-5 col-md-4 offset-lg-1">
             <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
             <img class="img-fluid" src="{{disco.caratula.url}}" alt="">
-            {{disco.titulo}} /
-            <a href="{% url 'banda' disco.banda.id %}">{{disco.banda}}</a>
+            <h4>{{disco.titulo}} /</h4>
+            <a href="{% url 'banda' disco.banda.id %}"><h4>{{disco.banda}}</h4></a>
             <p>Publicado el {{disco.fecha}}</p>
-            <p><b>Descripción del Disco:</b></p>
+            <p><b>Información del Disco:</b></p>
             <p>{{disco.descripDisco}}</p>
             <!-- CRÉDITOS, DATOS Y ROLES DE LA PRODUCCIÓN-->
             <p><b>Créditos y colaboraciones de la producción:</b></p>

@@ -16,11 +16,11 @@
          <div class="col-lg-5 col-md-4 offset-lg-1">
          <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
             <img class="img-fluid" src="{{musico.imgMusico.url}}" alt="">
-            <p>Nombre Artístico: {{musico.nombreArt}}</p>
-            <p>Nombre Real: {{musico.nombreReal}}</p>
+            <p><h4>{{musico.nombreArt}}</h4></p>
+            <p><b>Nombre Real:</b> {{musico.nombreReal}}</p>
             <!-- INSERTAR ACÁ BANDAS, ROLES Y PRODUCCIONES -->
             <br>
-            <p><b>Bandas:</b></p>
+            <p><b>Bandas o Proyectos:</b></p>
             {% for integrantes in integranteBanda %} <!--TODOS LOS INTEGRANTES DE BANDAS-->
                 {% if integrantes.musico_id == musico.id %} <!-- BANDA(S) DE ESTE ID DE MÚSICO-->
                     <p><a href="{% url 'banda' integrantes.banda.id %}">{{integrantes.banda.nombreBanda}}</a>
@@ -34,33 +34,34 @@
                 {% endif %}
             {% endfor %}    
             <br>
-            <p><b>Colaboraciones en producciones:</b></p>
+            <p><b>Colaboraciones Realizadas:</b></p>
             {% for produccion in produccionDisco %} <!--TODOS LOS MÚSICOS COLABORADORES-->
                 {% if produccion.musico_id == musico.id %} <!-- COLABORACIONES DE ESTE ID DE MÚSICO-->
                     <p>
                     <a class="navbar-brand" href="{% url 'disco' produccion.disco.id %}"><img class="img-fluid" src="{{produccion.disco.caratula.url}}" alt=""></a>
                     <a href="{% url 'disco' produccion.disco.id %}">{{produccion.disco.titulo}}</a>
                     </p>
-                    <p>Rol: <!--Carga roles desde el modelo y busca según índice del rol del artista-->
+                    <p><b>Rol: </b><!--Carga roles desde el modelo y busca según índice del rol del artista-->
                         {% for indice, item in produccion.ROL_PRODUCCION %}
                             {% if indice == produccion.rol %}
                                 {{item}}
                             {% endif %}
                         {% endfor %}
                         </p>
-                    <p>Descripción: {{produccion.descripcion}}</p>
+                    <p><b>Descripción: </b>{{produccion.descripcion}}</p>
                     <br>
                 {% endif %}
             {% endfor %} 
             <!--************************************************-->
+            <hr> <!-- Linea divisoria -->
             {% if musico.link_ig %}
-                <p><a href="{{musico.link_ig}}" target="_blank">Instagram</a></p>
+                <p><a href="{{musico.link_ig}}" target="_blank">Instagram de {{musico.nombreArt}}</a></p>
             {% endif %}
             {% if musico.link_fb %}
-                <p><a href="{{musico.link_fb}}" target="_blank">Facebook</a></p>
+                <p><a href="{{musico.link_fb}}" target="_blank">Facebook de {{musico.nombreArt}}</a></p>
             {% endif %}
             {% if musico.link_tw %}
-                <p><a href="{{musico.link_tw}}" target="_blank">Twitter</a></p>
+                <p><a href="{{musico.link_tw}}" target="_blank">Twitter de {{musico.nombreArt}}</a></p>
             {% endif %}
         </div>
     </div>
