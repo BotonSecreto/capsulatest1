@@ -4,7 +4,7 @@
 {% block title %}Catálogo{% endblock %} <!--Bloque de título para esta página -->
 
 <!--bloque de imagen de fondo-->
-{% block background %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
+{% block background %} {{disco.caratula.url}} {% endblock %} <!-- {% static 'core/img/home-bg.jpg' %}-->
 <!--bloque de título y subtítulo-->
 {% block headers %}
     <h2>:: Discos ::</h2>
@@ -26,41 +26,62 @@
         <div class="col-lg-5 col-md-4 offset-lg-1">
             <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
             <img class="img-fluid" src="{{disco.caratula.url}}" alt="">
-            <h4>{{disco.titulo}} /</h4>
+            <h4>{{disco.titulo}}</h4>
+            (Publicado el {{disco.fechaDisco | date:'d/m/Y'}})
+            <br>
+            <!-- Espacio para La tienda Nacional -->
             <a href="{% url 'banda' disco.banda.id %}"><h4>{{disco.banda}}</h4></a>
-            <p>Publicado el {{disco.fecha}}</p>
-            <p><b>Información del Disco:</b></p>
-            <p>{{disco.descripDisco}}</p>
+            <img width=30% src="{% static 'core/img/TNacional_logo.jpg' %}"><br>
+            {% if disco.link_tienda_cd %}
+                <a href="{{disco.link_tienda_cd}}" target="_blank"><b>Comprar CD</b></a>
+                <br>
+            {% endif %}
+            {% if disco.link_tienda_vin %}
+                <a href="{{disco.link_tienda_vin}}" target="_blank"><b>Comprar VINILO</b></a>
+                <br>
+            {% endif %}
+            {% if disco.link_tienda_cas %}
+                <a href="{{disco.link_tienda_cas}}" target="_blank"><b>Comprar CASSETTE</b></a>
+                <br>
+            {% endif %}
+            <p></p>
+            <b>Información del Disco</b><br>{{disco.descripDisco}}
             <!-- CRÉDITOS, DATOS Y ROLES DE LA PRODUCCIÓN-->
-            <p><b>Créditos y colaboraciones de la producción:</b></p>
+            <p></p>
+            <b>Créditos y colaboraciones de la producción</b><br>
             {% for produccion in produccionDisco %} <!--TODAS LAS COLABORACIONES DE MÚSICOS-->
                 {% if produccion.disco_id == disco.id %} <!-- COLABORACIONES DE ESTE ID DE DISCO-->
-                    <p><a href="{% url 'musico' produccion.musico.id %}">{{produccion.musico.nombreArt}}</a></p>
-                    <p>Rol: 
+                    <a href="{% url 'musico' produccion.musico.id %}">{{produccion.musico.nombreArt}}</a><br>
+                    <b>Rol: </b>
                     {% for indice, item in produccion.ROL_PRODUCCION %}
                         {% if indice == produccion.rol %}
                             {{item}}
                         {% endif %}
                     {% endfor %}
-                    </p>
-                    <p>Descripción: {{produccion.descripcion}}</p>
+                    <br>
+                    <b>Descripción: </b>{{produccion.descripcion}}
                     <br>
                 {% endif %}
-            {% endfor %} 
-            {% if disco.link_bndcmp %}
-                <p><a href="{{disco.link_bndcmp}}" target="_blank"><b>Escuchar en Bandcamp</b></a></p>
+            {% endfor %}
+            <p></p>
+            <b>"{{disco.titulo}}" en otras Plataformas</b><br>
+            {% if disco.link_apple %}
+                <!-- disco.link_apple: identificador de enlace a APPLE MUSIC -->
+                <a href="{{disco.link_apple}}" target="_blank">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-apple music fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
             {% endif %}
             {% if disco.link_ytb %}
-                <p><a href="{{disco.link_ytb}}" target="_blank"><b>Escuchar en Youtube</b></a></p>
-            {% endif %}
-            {% if disco.link_tienda_cd %}
-                <p><a href="{{disco.link_tienda_cd}}" target="_blank"><b>Comprar CD</b></a></p>
-            {% endif %}
-            {% if disco.link_tienda_vin %}
-                <p><a href="{{disco.link_tienda_vin}}" target="_blank"><b>Comprar VINILO</b></a></p>
-            {% endif %}
-            {% if disco.link_tienda_cas %}
-                <p><a href="{{disco.link_tienda_cas}}" target="_blank"><b>Comprar CASSETTE</b></a></p>
+                <!-- disco.link_ytb: identificador de enlace a YOUTUBE -->
+                <a href="{{disco.link_ytb}}" target="_blank">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
             {% endif %}
         </div>
     </div>

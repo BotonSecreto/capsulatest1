@@ -25,7 +25,8 @@ h6 {
 }
 
 a { /*hiperlinks*/
-   color:#000000ee;
+   /* color:#000000ee; */
+   color: #be2004;
    -webkit-transition:all .2s;
    -moz-transition:all .2s;
    transition:all .2s;
@@ -38,13 +39,19 @@ a { /*hiperlinks*/
 
 a:focus,
 a:hover {
-    color:#be2004;
+    color:#df6604;
     text-decoration: none /* elimina linea inferior del link  */
 }
 
 blockquote {
     font-style:italic;
     color:#868e96
+}
+
+fecha {
+    font-size:10px;
+    font-style: italic;
+    font-weight: 200;
 }
 
 .avatar {

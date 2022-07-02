@@ -107,7 +107,7 @@
                 </a>
                 {% endif %}
                 {% if LINK_IG %}
-                <!-- LINK_TW: identificador de enlace a INSTAGRAM -->
+                <!-- LINK_IG: identificador de enlace a INSTAGRAM -->
                 <a href="{{LINK_IG}}" target="_blank">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x"></i>
@@ -115,15 +115,30 @@
                     </span>
                 </a>
                 {% endif %}
+                {% if LINK_YTB %}
+                <!-- LINK_YTB: identificador de enlace a YOUTUBE -->
+                <a href="{{LINK_YTB}}" target="_blank">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                {% endif %}
+                {% if LINK_SPTF %}
+                <!-- LINK_SPTF: identificador de enlace a SPOTIFY -->
+                <a href="{{LINK_SPTF}}" target="_blank">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-spotify fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                {% endif %}
             </p> <!-- páginas extras acá -->
-            
-            <p class="copyright text-muted">Copyright &copy; 2022 · Diseñado por Mauro Solar </p>
-            <p class="m-0 mbt1">&copy; Cápsula Discos 2022</p>
+            <p class="copyright text-muted">&copy;<b>Cápsula Discos 2022</b>, todos los derechos reservados</p>
+            <p class="copyright text-muted">Desarrollado por <a href="https://www.instagram.com/maurosolar/">Mauro Solar</a></p>
         </div>
     </footer>
-    <!-- Bootstrap **** Los archivos JavaScript siempre en la parte inferior dentro del body -->
-    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
-    <!-- Versión completa de bootstrap js-->
+    <!-- Bootstrap **** Losstrap js-->
     <!-- <script src="{% static 'core/vendor/bootstrap/js/bootstrap.js' %}"></script> -->
     <!-- Versión mínima de bootstrap js-->
     <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

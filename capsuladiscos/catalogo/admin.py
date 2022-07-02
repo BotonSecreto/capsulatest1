@@ -27,11 +27,11 @@ class MusicoAdmin(admin.ModelAdmin):
 
 class DiscoAdmin(admin.ModelAdmin):
     #readonly_fields = ('titulo','fecha')
-    list_display = ('titulo','fecha','descripDisco','banda') #columnas expuestas incluye "listaColaboradores"
-    ordering = ('fecha','titulo','banda') #categorías ordenamiento 
+    list_display = ('titulo','fechaDisco','descripDisco','banda') #columnas expuestas incluye "listaColaboradores"
+    ordering = ('fechaDisco','titulo','banda') #categorías ordenamiento 
     search_fields = ('titulo','descripBanda') #para campo de busqueda
     #date_hierarchy = 'published' #navega por fechas
-    list_filter = ('titulo', 'banda','fecha') #filtro que permite agrupar por campos
+    list_filter = ('titulo', 'banda','fechaDisco') #filtro que permite agrupar por campos
     #pass
 
     #método para mostrar "lista de Bandas del Músico"

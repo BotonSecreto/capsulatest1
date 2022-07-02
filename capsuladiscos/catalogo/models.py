@@ -8,7 +8,7 @@ class Banda(models.Model):
     imgBanda = models.ImageField(null=True, upload_to="bandas",verbose_name="Imagen Banda") #sube imágenes al directorio 'media/proyects'
     descripBanda = models.TextField(null=True, verbose_name="Descripción")
     link_sptf = models.URLField(null=True, blank=True,verbose_name="Link Spotify") #Crea el link del modelo
-    link_bndcmp = models.URLField(null=True, blank=True,verbose_name="Link BandCamp") #Crea el link del modelo
+    link_apple = models.URLField(null=True, blank=True,verbose_name="Link Apple Music") #Crea el link del modelo
     link_ytb = models.URLField(null=True, blank=True,verbose_name="Link YouTube") #Crea el link del modelo
     link_ig = models.URLField(null=True, blank=True,verbose_name="Link Instagram") #Crea el link del modelo
     link_fb = models.URLField(null=True, blank=True,verbose_name="Link Facebook") #Crea el link del modelo
@@ -46,10 +46,10 @@ class Musico(models.Model):
 class Disco(models.Model):
     titulo = models.CharField(max_length=200,verbose_name="Título")
     caratula = models.ImageField(null=True, upload_to="catalogo",verbose_name="Carátula") #sube imágenes al directorio 'media/proyects'
-    fecha = models.DateTimeField(default=now,verbose_name="Fecha de publicación")
+    fechaDisco = models.DateField(default=now,verbose_name="Fecha de publicación")
     descripDisco = models.TextField(null=True, verbose_name="Descripción")
     link_sptf = models.TextField(null=True, max_length=300,verbose_name="Código inserción desde Spotify")
-    link_bndcmp = models.URLField(null=True, blank=True,verbose_name="Link BandCamp") #Crea el link del modelo
+    link_apple = models.URLField(null=True, blank=True,verbose_name="Link Apple Music") #Crea el link del modelo
     link_ytb = models.URLField(null=True, blank=True,verbose_name="Link YouTube") #Crea el link del modelo
     link_tienda_cd = models.URLField(null=True, blank=True,verbose_name="Link Tienda Nacional CD") #Crea el link del modelo
     link_tienda_vin = models.URLField(null=True, blank=True,verbose_name="Link Tienda Nacional VINILO") #Crea el link del modelo
