@@ -12,14 +12,16 @@
 {% endblock %}
 
 {% block content %}
-{% for disco in discos %}
-    <div>
-        <div class="col-lg-2 col-md-4 offset-lg-1">
+    <div class="alinear-discos">
+        {% for disco in discos %}
             <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
-            <a class="navbar-brand" href="{% url 'disco' disco.id %}"><img class="img-fluid" src="{{disco.caratula.url}}" alt=""></a>
-            <a href="{% url 'disco' disco.id %}"><h6>{{disco.titulo}}</a> / 
-            <a href="{% url 'banda' disco.banda.id %}">{{disco.banda}}</h6></a>
-        </div>     
-    </div>
-{% endfor %}
+            <div class="col-lg-3 offset-lg-1 catalogo-nom-disco">
+                <a href="{% url 'disco' disco.id %}"><img class="img-fluid" src="{{disco.caratula.url}}" alt=""></a>
+                <a href="{% url 'disco' disco.id %}">{{disco.titulo}}</a>
+                <b class="info-plataformas">({{disco.fechaDisco | date:'Y'}})</b>
+                <br><a href="{% url 'banda' disco.banda.id %}">{{disco.banda}}</a>
+                <p></p>
+            </div>
+        {% endfor %}
+    </div>  
 {% endblock %} 

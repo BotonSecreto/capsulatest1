@@ -32,6 +32,7 @@ class DiscoAdmin(admin.ModelAdmin):
     search_fields = ('titulo','descripBanda') #para campo de busqueda
     #date_hierarchy = 'published' #navega por fechas
     list_filter = ('titulo', 'banda','fechaDisco') #filtro que permite agrupar por campos
+    #readonly_fields = ('created', 'updated')
     #pass
 
     #método para mostrar "lista de Bandas del Músico"

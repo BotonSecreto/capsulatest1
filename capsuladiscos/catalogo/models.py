@@ -26,14 +26,10 @@ class Musico(models.Model):
     nombreArt = models.CharField(max_length=200,verbose_name="Nombre Artístico")
     nombreReal = models.CharField(null=True, max_length=200,verbose_name="Nombre Real")
     imgMusico = models.ImageField(null=True, upload_to="musicos",verbose_name="Imagen Músico") #sube imágenes al directorio 'media/proyects'
-    #link_sptf = models.URLField(null=True, blank=True,verbose_name="Link Spotify") #Crea el link del modelo
-    #link_bndcmp = models.URLField(null=True, blank=True,verbose_name="Link BandCamp") #Crea el link del modelo
-    #link_ytb = models.URLField(null=True, blank=True,verbose_name="Link YouTube") #Crea el link del modelo
     link_ig = models.URLField(null=True, blank=True,verbose_name="Link Instagram") #Crea el link del modelo
     link_fb = models.URLField(null=True, blank=True,verbose_name="Link Facebook") #Crea el link del modelo
     link_tw = models.URLField(null=True, blank=True,verbose_name="Link Twitter") #Crea el link del modelo
     #get_posts lo define para utilizar relación en ambos sentidos
-    #bandas = models.ManyToManyField(Banda,verbose_name="bandas", related_name="get_posts") #bandas del músico
    
     class Meta:
         verbose_name = "Músico"
@@ -54,10 +50,12 @@ class Disco(models.Model):
     link_tienda_cd = models.URLField(null=True, blank=True,verbose_name="Link Tienda Nacional CD") #Crea el link del modelo
     link_tienda_vin = models.URLField(null=True, blank=True,verbose_name="Link Tienda Nacional VINILO") #Crea el link del modelo
     link_tienda_cas = models.URLField(null=True, blank=True,verbose_name="Link Tienda Nacional CASSETTE") #Crea el link del modelo
-    #campos relaciones con tablas "Banda" y "Músicos"
+    #campo relacione con tablas "Banda" y "Músicos"
     banda = models.ForeignKey(Banda, on_delete=models.CASCADE,verbose_name="Banda")
-    #musicos = models.ManyToManyField(Musico, verbose_name="Músicos", related_name="get_posts") #colaboradores del disco
-   
+    
+    #ordenamiento por fecha de disco, banda y título en ese orden
+    ordering = ['fechaDisco','banda','titulo'] 
+
     class Meta: #como se verá en el administrador
         verbose_name = "disco"
         verbose_name_plural = "discos"
@@ -83,7 +81,6 @@ class ProduccionDisco(models.Model):
         (5, "Otro"),
     ]
     #******* CAMPOS CLAVE
-    #banda = models.ForeignKey(Banda, on_delete=models.CASCADE,verbose_name="Banda")
     disco = models.ForeignKey(Disco, on_delete=models.CASCADE,verbose_name="Disco")
     musico = models.ForeignKey(Musico, on_delete=models.CASCADE,verbose_name="Músico")
     #******* ATRIBUTOS 
@@ -110,7 +107,6 @@ class IntegranteBanda(models.Model):
         (5, "Otro"),
     ]
     #******* CAMPOS CLAVE
-    #banda = models.ForeignKey(Banda, on_delete=models.CASCADE,verbose_name="Banda")
     banda = models.ForeignKey(Banda, on_delete=models.CASCADE,verbose_name="Banda")
     musico = models.ForeignKey(Musico, on_delete=models.CASCADE,verbose_name="Músico")
     #******* ATRIBUTOS 

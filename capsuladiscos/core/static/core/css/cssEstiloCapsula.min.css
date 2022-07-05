@@ -2,7 +2,8 @@ body{
     /* font-size:20px; */
     font-size:18px;
     color:#212529;
-    font-family:Lora,'Times New Roman',serif
+    /* font-family:Lora,'Times New Roman',serif */
+    font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif
 }
 
 p { /*párrafos*/
@@ -48,10 +49,45 @@ blockquote {
     color:#868e96
 }
 
-fecha {
-    font-size:10px;
-    font-style: italic;
-    font-weight: 200;
+.fecha {
+    font-size:13px;
+    font-style: oblique
+}
+
+.info-rol {
+    font-size: 16px;
+    font-style: oblique;
+}
+.info {
+    font-size: 16px;
+    font-style: oblique;
+    /* text-decoration: dotted; */
+}
+.info-creditos {
+    font-size: 16px;
+    /* text-indent: 20px; */
+    font-style: oblique;
+    padding-left: 20px 
+}
+
+.info-plataformas {
+    color:#464545ee;
+    font-size: 12px;
+    font-style: oblique;
+    /* padding-left: 20px  */
+}
+
+.catalogo-nom-disco {
+    font-size: 14px;
+    font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    text-align: center;
+    /* border: #868e96 1pt;
+    border-style: dashed; */
+}
+
+.alinear-discos {
+    display:flex;
+    flex-wrap: wrap;
 }
 
 .avatar {
