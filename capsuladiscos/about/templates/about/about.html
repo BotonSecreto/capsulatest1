@@ -14,12 +14,12 @@
 {% endblock %}
 {% block content%}
     {% for nos in nosotros %} <!--ocupamos el diccionario "proyectos" y  lo recorremos-->
-    <div class="row project">
-        <div class="col-lg-3 col-md-4 offset-lg-1">
+    <div class="alinear-discos">
+        <div class="col-lg-3 offset-lg-1">
             <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
             <img class="img-fluid" src="{{nos.imagen.url}}" alt="">
         </div>
-        <div class="col-lg-7 col-md-8">
+        <div class="col-lg-7">
             <h2 class="section-heading title">{{nos.titulo}}</h2>
             <p>{{nos.descripcion|safe}}</p> <!-- contenido se editará con CKeditor -->
             {% if nos.link %}

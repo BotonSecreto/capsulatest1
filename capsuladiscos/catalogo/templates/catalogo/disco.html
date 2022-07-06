@@ -7,7 +7,7 @@
 {% block background %} {{disco.caratula.url}} {% endblock %} <!-- {% static 'core/img/home-bg.jpg' %}-->
 <!--bloque de título y subtítulo-->
 {% block headers %}
-    <h2>:: Discos ::</h2>
+    <h2>:: Disco ::</h2>
     <span class="subheading">{{disco.titulo}} - {{disco.banda}}</span>
 {% endblock %}
 
@@ -62,17 +62,17 @@
         {% endif %} -->
         <div>
             {% if disco.link_tienda_cd %}
-                <a href="{{disco.link_tienda_cd}}" target="_blank"><img width=30% src="{% static 'core/img/TNacional_logo.jpg' %}"></a>
+                <a href="{{disco.link_tienda_cd}}" target="_blank"><img width=25% src="{% static 'core/img/TNacional_logo.jpg' %}"></a>
                 <a href="{{disco.link_tienda_cd}}" target="_blank"><b>Comprar CD</b></a>
                 <br>
             {% endif %}
             {% if disco.link_tienda_vin %}
-                <a href="{{disco.link_tienda_vin}}" target="_blank"><img width=30% src="{% static 'core/img/TNacional_logo.jpg' %}"></a>
+                <a href="{{disco.link_tienda_vin}}" target="_blank"><img width=25% src="{% static 'core/img/TNacional_logo.jpg' %}"></a>
                 <a href="{{disco.link_tienda_vin}}" target="_blank"><b>Comprar VINILO</b></a>
                 <br>
             {% endif %}
             {% if disco.link_tienda_cas %}
-                <a href="{{disco.link_tienda_cas}}" target="_blank"><img width=30% src="{% static 'core/img/TNacional_logo.jpg' %}"></a>
+                <a href="{{disco.link_tienda_cas}}" target="_blank"><img width=25% src="{% static 'core/img/TNacional_logo.jpg' %}"></a>
                 <a href="{{disco.link_tienda_cas}}" target="_blank"><b>Comprar CASSETTE</b></a>
                 <br>
             {% endif %}

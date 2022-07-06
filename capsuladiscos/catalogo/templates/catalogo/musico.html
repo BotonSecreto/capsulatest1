@@ -7,10 +7,10 @@
 <!--Bloque de título para esta página -->
 
 <!--bloque de imagen de fondo-->
-{% block background %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
+{% block background %}{{musico.imgMusico.url}}{% endblock %}
 <!--bloque de título y subtítulo-->
 {% block headers %}
-<h2>:: Artistas ::</h2>
+<h2>:: Artista ::</h2>
 <span class="subheading">{{musico.nombreArt}}</span>
 {% endblock %}
 

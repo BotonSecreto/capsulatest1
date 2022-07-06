@@ -144,7 +144,6 @@ img::-moz-selection {
 
 #mainNav .navbar-brand {
     font-weight:800;
-    /* color:#343a40 */
     color: #000000ee
 }
 
@@ -153,7 +152,6 @@ img::-moz-selection {
     font-weight:800;
     padding:13px;
     text-transform:uppercase;
-    /* color:#343a40 */
     color: #000000ee
 }
 
@@ -448,8 +446,8 @@ form .form-group:first-child .floating-label-form-group {
 }
 
 hr {
-    margin-top:4.5rem !important;
-    margin-bottom: 3.5rem !important;
+    margin-top:3rem !important;
+    margin-bottom: 1rem !important;
 }
 
 footer {
