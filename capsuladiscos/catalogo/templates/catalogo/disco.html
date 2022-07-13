@@ -79,13 +79,25 @@
         </div>
         <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <p></p><br>
-
         <b>Información del Disco</b><br>
         <span class="info-creditos" >Publicación: {{disco.fechaDisco}}</span><!--{{disco.fechaDisco | date:'d/m/Y'}}-->
         <div class="info-creditos">{{disco.descripDisco}}</div>
-        <!-- CRÉDITOS, DATOS Y ROLES DE LA PRODUCCIÓN-->
+        <!-- ************ CRÉDITOS, DATOS Y ROLES DE LA PRODUCCIÓN***********-->
         <p></p>
-        <b>Créditos y colaboraciones de la producción</b><br>
+
+        <span id="colabDisco"></span>
+        {% for prod in produccionDisco %} 
+            {% if prod.disco_id == disco.id %}
+                <!-- cargar título-->
+                <script type="text/javascript"> 
+                    escribirDisc();
+                    function escribirDisc(){
+                        document.getElementById("colabDisco").innerHTML = '<b>Créditos y colaboraciones de la producción</b>';
+                    }
+                </script>
+            {% endif %}
+        {% endfor %}
+        <br>
         {% for produccion in produccionDisco %} <!--TODAS LAS COLABORACIONES DE MÚSICOS-->
             {% if produccion.disco_id == disco.id %} <!-- COLABORACIONES DE ESTE ID DE DISCO-->
                 <a class="info-creditos" href="{% url 'musico' produccion.musico.id %}">{{produccion.musico.nombreArt}}</a>

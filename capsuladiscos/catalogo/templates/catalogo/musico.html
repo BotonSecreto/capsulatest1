@@ -78,7 +78,19 @@
     </div>
      <!-- :::::::::::::::: COLABORACIONES DEL MÚSICO ::::::::::::::-->
     <div >
-        <b class="col-lg-2 offset-lg-1">Colaboraciones Realizadas</b>
+        <span id="colabMusico"></span>
+        {% for prod in produccionDisco %}
+            {% if prod.musico_id == musico.id %}
+                <!-- cargar título-->
+                <script type="text/javascript">
+                    escribirMus();
+                    function escribirMus(){
+                        document.getElementById("colabMusico").innerHTML = '<b class="col-lg-2 offset-lg-1">Colaboraciones Realizadas</b>';
+                    }
+                </script>
+            {% endif %}
+        {% endfor %}
+        <!-- *********************** -->
         <P></P>
         <div class="alinear-discos">
             {% for produccion in produccionDisco %}
@@ -86,34 +98,23 @@
             {% if produccion.musico_id == musico.id %}
             <!-- COLABORACIONES DE ESTE ID DE MÚSICO-->
                 <div class="col-lg-3 offset-lg-1 catalogo-nom-disco">
-                    <a href="{% url 'disco' produccion.disco.id %}"><img class="img-fluid" src="{{produccion.disco.caratula.url}}" alt=""></a>
-                    <a href="{% url 'disco' produccion.disco.id %}">{{produccion.disco.titulo}}</a>
-                    <b class="info-plataformas">({{produccion.disco.fechaDisco | date:'Y'}})</b>
-                    <br><a href="{% url 'banda' produccion.disco.banda.id %}">{{produccion.disco.banda}}</a>
-                    <br>
-                    <!--Carga roles desde el modelo y busca según índice del rol del artista-->
-                    {% for indice, item in produccion.ROL_PRODUCCION %}
+                <a href="{% url 'disco' produccion.disco.id %}"><img class="img-fluid" src="{{produccion.disco.caratula.url}}" alt=""></a>
+                <a href="{% url 'disco' produccion.disco.id %}">{{produccion.disco.titulo}}</a>
+                <b class="info-plataformas">({{produccion.disco.fechaDisco | date:'Y'}})</b>
+                <br><a href="{% url 'banda' produccion.disco.banda.id %}">{{produccion.disco.banda}}</a>
+                <br>
+                <!--Carga roles desde el modelo y busca según índice del rol del artista-->
+                {% for indice, item in produccion.ROL_PRODUCCION %}
                     {% if indice == produccion.rol %}
                         <b class="info-rol"> ({{item}})</b>
                         <!-- <input id="bandId" name="bandId" type="hidden" value="1"> -->
                     {% endif %}
-                    {% endfor %}
-                    <br><span class="info-creditos">{{produccion.descripcion}}</span>
-                    <p></p>
+                {% endfor %}
+                <br><span class="info-creditos">{{produccion.descripcion}}</span>
+                <p></p>
                 </div>
             {% endif %}
             {% endfor %}
-            <!-- valida -->
-            <!-- <script type="text/javascript">
-                flager();
-                function flager(){
-                    if (document.getElementById("bandId").value == "1") {
-                        document.write('<span class="info-creditos">No tiene colaboraciones en Cápsula Discos</span>');            
-                    }
-                }
-            </script> -->
-            <!-- :::::::-->
-            <!-- <span class="info-creditos">No tiene colaboraciones en Cápsula Discos</span> -->
         </div>
     </div>
 </div>
