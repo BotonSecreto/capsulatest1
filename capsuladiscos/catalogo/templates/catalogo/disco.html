@@ -16,7 +16,7 @@
     <!--*******************CARÁTULA*****************-->
     <div class="col-lg-5 offset-lg-1">
         <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
-        <div><img class="img-fluid" src="{{disco.caratula.url}}" alt=""></div>
+        <div><img class="img-fluid caratula-tam" src="{{disco.caratula.url}}" alt=""></div>
         <h4>
             {{disco.titulo}}<br>
             <a href="{% url 'banda' disco.banda.id %}">{{disco.banda}}</a>
@@ -27,12 +27,7 @@
     <div class="col-lg-5 offset-lg-1">
         <textarea maxlength="300" id="txt_sptf" hidden=True>{{disco.link_sptf}}</textarea>
         <div id="reprod"></div>
-        <script type="text/javascript">
-            capturar();
-            function capturar(){
-            document.getElementById("reprod").innerHTML += document.getElementById("txt_sptf").value;
-            }
-        </script>
+        <script type="text/javascript">capturar();</script>
     </div>
     <!-- *************DATOS DEL DISCO ********** -->
     <div class="col-lg-5 offset-lg-1">
@@ -89,12 +84,7 @@
         {% for prod in produccionDisco %} 
             {% if prod.disco_id == disco.id %}
                 <!-- cargar título-->
-                <script type="text/javascript"> 
-                    escribirDisc();
-                    function escribirDisc(){
-                        document.getElementById("colabDisco").innerHTML = '<b>Créditos y colaboraciones de la producción</b>';
-                    }
-                </script>
+                <script type="text/javascript">escribirDisc();</script>
             {% endif %}
         {% endfor %}
         <br>

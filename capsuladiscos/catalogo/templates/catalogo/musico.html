@@ -72,7 +72,7 @@
     <!-- ::::::::: IMAGEN DEL MÚSICO :::::::-->
     <div class="col-lg-5 offset-lg-1">
         <!-- ImageField tiene atributo url que genera ruta correcta automáticamente ocupando variable MEDIA_URL en settings.py -->
-        <img class="img-fluid" src="{{musico.imgMusico.url}}" alt="">
+        <img class="img-fluid imgBandaMusico-tam" src="{{musico.imgMusico.url}}" alt="">
         <p>
         
     </div>
@@ -82,12 +82,7 @@
         {% for prod in produccionDisco %}
             {% if prod.musico_id == musico.id %}
                 <!-- cargar título-->
-                <script type="text/javascript">
-                    escribirMus();
-                    function escribirMus(){
-                        document.getElementById("colabMusico").innerHTML = '<b class="col-lg-2 offset-lg-1">Colaboraciones Realizadas</b>';
-                    }
-                </script>
+                <script type="text/javascript">escribirMus();</script>
             {% endif %}
         {% endfor %}
         <!-- *********************** -->

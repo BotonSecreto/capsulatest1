@@ -84,7 +84,33 @@ blockquote {
     /* border: #868e96 1pt;
     border-style: dashed; */
 }
+/* ::: TAMAÑOS DE CARÁTULA DEPENDIENDO DE MONITOR :::: */
+@media only screen and (min-width:992px) {
+    .caratula-tam{
+        height: auto;
+    }
+}
 
+@media only screen and (min-width:768px) {
+    .caratula-tam{
+        height: 380px;
+    }
+}
+/* ::: TAMAÑOS DE IMAGEN BANDA/MÚSICO DEPENDIENDO DE MONITOR :::: */
+@media only screen and (min-width:992px) {
+    .imgBandaMusico-tam{
+        height: auto;
+        /* width: fit-content; */
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .imgBandaMusico-tam{
+        height: 420px;
+        width: 420px;
+    }
+}
+/* :::::::::::::::::::::::::::::::::::::::::::::::::: */
 .alinear-discos {
     display:flex;
     flex-wrap: wrap;
