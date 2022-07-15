@@ -148,7 +148,3 @@ EMAIL_HOST_USER = email_setting['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = email_setting['EMAIL_HOST_PASSWORD']
 EMAIL_PORT = email_setting['EMAIL_PORT']
 EMAIL_USE_TLS = email_setting['EMAIL_USE_TLS']
-
-# ************Claves para reCAPTCHA**************
-RECAPTCHA_PUBLIC_KEY = '6Le-Zu8gAAAAAN1ahus9bziUp0NGRzdXGRslfxDP'
-RECAPTCHA_PRIVATE_KEY = '6Le-Zu8gAAAAACMj7Q5kIKKci9AHgjDq0JDsbqCw'

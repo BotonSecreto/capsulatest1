@@ -10,7 +10,6 @@
     <!-- <span class="subheading">Contacto</span> -->
 {% endblock %}
 {% block content %}
-<script src='https://www.google.com/recaptcha/api.js?hl=es'></script><!--SCRIPT RECAPTCHA -->
 <section style="border: dashed; border-color: darkgray;" class="page-section about-heading">
   <div class="container">
     <div class="about-heading-content">
@@ -49,13 +48,6 @@
                         {{form.content}}
                     </div>
                     {{form.content.errors}}
-                </div>
-                <div class="form-group">
-                  <!-- <label>recaptcha *</label> -->
-                  <div class="input-group">
-                    <div class="g-recaptcha" data-sitekey="6Le-Zu8gAAAAAN1ahus9bziUp0NGRzdXGRslfxDP"></div><!-- RECAPTCHA -->
-                  </div>
-                  <!-- {{form.recaptcha.errors}} -->
                 </div>
                 <div class="form-group">
                   Estos campos son obligatorios *

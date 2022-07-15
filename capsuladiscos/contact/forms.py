@@ -1,8 +1,4 @@
-from tkinter import Widget
 from django import forms
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Checkbox
-from pkg_resources import require
 
 class ContactForm(forms.Form):
     name = forms.CharField(label="Nombre", required=True, widget=forms.TextInput(
@@ -14,5 +10,4 @@ class ContactForm(forms.Form):
     content = forms.CharField(label="Contenido", required=True, widget=forms.Textarea(
         attrs={'class':'form-control', 'rows': 3, 'placeholder':'Tu mensaje'}
     ), min_length=10, max_length=1000)
-    recaptcha = ReCaptchaField(required=True, widget=ReCaptchaV2Checkbox) #campo de reCAPTCHA
     
