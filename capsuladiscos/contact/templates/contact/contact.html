@@ -22,10 +22,11 @@
             </h2>
             <!-- Formulario de contacto -->
             {% if 'ok' in request.GET %}
-                <p><b>Tu mensaje fue enviado correctamente, pronto nos pondremos en contacto, ¡gracias!</b></p>
-            {% else %}
-                <p><b>Algo falló en el envío, inténtalo otra vez.</b></p>
+                <p><b>::Gracias por escribirnos::</b></p>
+                {% elif 'fail' in request.GET%}
+                <p><b>::ERROR, debes completar todo el formulario::</b></p>
             {% endif %}
+
             <form action="" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
@@ -49,7 +50,16 @@
                     </div>
                     {{form.content.errors}}
                 </div>
-                <div class="g-recaptcha" data-sitekey="6Le-Zu8gAAAAAN1ahus9bziUp0NGRzdXGRslfxDP"></div><!-- RECAPTCHA -->
+                <div class="form-group">
+                  <!-- <label>recaptcha *</label> -->
+                  <div class="input-group">
+                    <div class="g-recaptcha" data-sitekey="6Le-Zu8gAAAAAN1ahus9bziUp0NGRzdXGRslfxDP"></div><!-- RECAPTCHA -->
+                  </div>
+                  <!-- {{form.recaptcha.errors}} -->
+                </div>
+                <div class="form-group">
+                  Estos campos son obligatorios *
+                </div>
                 <div class="text-center">
                     <input type="submit" class="btn btn-primary btn-block py-2" value="Enviar">
                 </div>
