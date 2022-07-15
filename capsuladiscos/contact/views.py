@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.urls import reverse
 from django.core.mail import EmailMessage #Importar para la estructura del correo
 from .forms import ContactForm #Importamos el formulario
@@ -30,5 +30,6 @@ def contact(request):
             except:
                 # Algo no ha ido bien, redireccionamos a FAIL
                 return redirect(reverse('contact')+"?fail")
-
+        # else:
+        #     return HttpResponse("Debe completar todos los campos del formulario")
     return render(request, "contact/contact.html",{'form':contact_form})
