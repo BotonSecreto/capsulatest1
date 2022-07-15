@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'about.apps.AboutConfig', #activar pagina nosotros y configuraciones de 'app'
     'social.apps.SocialConfig', #activar modelo "social"
     'catalogo.apps.CatalogoConfig', #activar modelo "catalogo" del home 
-    'captcha', #activar reCAPTCHA para formulario de contacto
 ]
 
 MIDDLEWARE = [
